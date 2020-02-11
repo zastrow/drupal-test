@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  drupaltest:
+    build: .
+    container_name: drupaltest
+    ports:
+      - "80:80"
+    volumes:
+      - ./drupal:/var/www/html
+      # - ./drupaltest.conf:/etc/apache2/sites-enabled/drupaltest.conf
+      # - ./apached.conf:/etc/apache2/conf-enabled/drupaltest.conf
+
+  drupaltest_db:
+    image: "mysql:5.6"
+    container_name: drupaltest_db
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./db-import:/docker-entrypoint-initdb.d
+    env_file:
+      - .env
