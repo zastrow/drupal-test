@@ -8,8 +8,6 @@ services:
       - "80:80"
     volumes:
       - ./drupal:/var/www/html
-      # - ./drupaltest.conf:/etc/apache2/sites-enabled/drupaltest.conf
-      # - ./apached.conf:/etc/apache2/conf-enabled/drupaltest.conf
 
   drupaltest_db:
     image: "mysql:5.6"
